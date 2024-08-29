@@ -1,0 +1,93 @@
+[gd_scene load_steps=6 format=3 uid="uid://bre3mgdgt6vdq"]
+
+[ext_resource type="Script" path="res://scenes/map.gd" id="1_15lwg"]
+[ext_resource type="TileSet" uid="uid://cjeakxl3fj6x3" path="res://assets/base_tilemap.tres" id="1_jm1xc"]
+[ext_resource type="Script" path="res://scripts/tile_map_layer_data.gd" id="3_r1brl"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_uvumv"]
+seed = 9
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i42uf"]
+noise = SubResource("FastNoiseLite_uvumv")
+
+[node name="WorldMap" type="Node2D"]
+script = ExtResource("1_15lwg")
+noise_height_texture = SubResource("NoiseTexture2D_i42uf")
+
+[node name="tile_map_layers" type="Node2D" parent="."]
+
+[node name="water_0" type="TileMapLayer" parent="tile_map_layers"]
+use_parent_material = true
+rotation = -0.000695561
+tile_set = ExtResource("1_jm1xc")
+script = ExtResource("3_r1brl")
+min_threshold = -5.0
+max_threshold = 0.25
+terrain_set_id = 5
+
+[node name="beach_0" type="TileMapLayer" parent="tile_map_layers"]
+use_parent_material = true
+rotation = -0.000695561
+tile_set = ExtResource("1_jm1xc")
+script = ExtResource("3_r1brl")
+min_threshold = 0.15
+max_threshold = 0.3
+terrain_set_id = 3
+
+[node name="ground_0" type="TileMapLayer" parent="tile_map_layers"]
+use_parent_material = true
+rotation = -0.000695561
+tile_set = ExtResource("1_jm1xc")
+script = ExtResource("3_r1brl")
+min_threshold = 0.2
+max_threshold = 0.25
+terrain_set_id = 2
+
+[node name="ground_1" type="TileMapLayer" parent="tile_map_layers"]
+use_parent_material = true
+rotation = -0.000695561
+tile_set = ExtResource("1_jm1xc")
+script = ExtResource("3_r1brl")
+min_threshold = 0.25
+max_threshold = 0.3
+terrain_set_id = 1
+
+[node name="ground_2" type="TileMapLayer" parent="tile_map_layers"]
+use_parent_material = true
+rotation = -0.000695561
+tile_set = ExtResource("1_jm1xc")
+script = ExtResource("3_r1brl")
+min_threshold = 0.3
+max_threshold = 1.0
+atlas_coords = Array[Vector2i]([Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0), Vector2i(5, 0)])
+terrain_set_id = -1
+
+[node name="cliff_0" type="TileMapLayer" parent="tile_map_layers"]
+use_parent_material = true
+rotation = -0.000695561
+tile_set = ExtResource("1_jm1xc")
+script = ExtResource("3_r1brl")
+min_threshold = 0.4
+max_threshold = 1.0
+terrain_set_id = 4
+
+[node name="building_water_0" type="TileMapLayer" parent="tile_map_layers"]
+use_parent_material = true
+rotation = -0.000695561
+tile_set = ExtResource("1_jm1xc")
+script = ExtResource("3_r1brl")
+min_threshold = 0.15
+max_threshold = 0.16
+atlas_coords = Array[Vector2i]([Vector2i(11, 0)])
+terrain_set_id = -1
+
+[node name="building_land_0" type="TileMapLayer" parent="tile_map_layers"]
+use_parent_material = true
+rotation = -0.000695561
+tile_set = ExtResource("1_jm1xc")
+script = ExtResource("3_r1brl")
+min_threshold = 0.4
+max_threshold = 0.8
+atlas_coords = Array[Vector2i]([Vector2i(12, 0)])
+terrain_set_id = -1
+active = false

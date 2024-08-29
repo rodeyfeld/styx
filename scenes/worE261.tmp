@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://gib6hltrr2rb"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_e2vyf"]
+[ext_resource type="TileSet" uid="uid://cjeakxl3fj6x3" path="res://assets/base_tilemap.tres" id="2_3gmnk"]
+[ext_resource type="PackedScene" uid="uid://nt74txyyhp2d" path="res://scenes/player.tscn" id="3_ytobb"]
+
+[sub_resource type="Gradient" id="Gradient_r4mx4"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.32973, 0.459459, 0.678378)
+colors = PackedColorArray(0, 1, 0, 1, 0, 0.195909, 1, 1, 0.620041, 0.620041, 0, 1, 0.478657, 0.305477, 0.182316, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_yof2j"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iypmi"]
+color_ramp = SubResource("Gradient_r4mx4")
+noise = SubResource("FastNoiseLite_yof2j")
+
+[node name="World" type="Node2D"]
+rotation = -0.000695561
+script = ExtResource("1_e2vyf")
+noise_height_texture = SubResource("NoiseTexture2D_iypmi")
+metadata/_edit_horizontal_guides_ = [79.0]
+
+[node name="water_0" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_set = ExtResource("2_3gmnk")
+
+[node name="ground_0" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_set = ExtResource("2_3gmnk")
+
+[node name="ground_1" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_set = ExtResource("2_3gmnk")
+
+[node name="cliff_0" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_set = ExtResource("2_3gmnk")
+
+[node name="environment_0" type="TileMapLayer" parent="."]
+use_parent_material = true
+tile_set = ExtResource("2_3gmnk")
+
+[node name="Player" parent="." instance=ExtResource("3_ytobb")]
+position = Vector2(4.00002, 0.0027771)
+SPEED = 5000.0
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+visible = false
+position = Vector2(6.99515, 7.00487)
