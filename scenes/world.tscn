@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://gib6hltrr2rb"]
+[gd_scene load_steps=4 format=3 uid="uid://gib6hltrr2rb"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_kaqr7"]
 [ext_resource type="PackedScene" uid="uid://bre3mgdgt6vdq" path="res://scenes/map.tscn" id="2_afgw4"]
 [ext_resource type="PackedScene" uid="uid://nt74txyyhp2d" path="res://scenes/player.tscn" id="3_gwkkr"]
-[ext_resource type="PackedScene" uid="uid://dnphbqodr0ycv" path="res://scenes/port.tscn" id="4_jdbdx"]
 
 [node name="World" type="Node2D"]
 rotation = -0.000695561
@@ -19,6 +18,3 @@ SPEED = 5000.0
 [node name="Camera2D" type="Camera2D" parent="Player"]
 visible = false
 position = Vector2(6.99515, 7.00487)
-
-[node name="Port" parent="." instance=ExtResource("4_jdbdx")]
-position = Vector2(496.784, 311.346)

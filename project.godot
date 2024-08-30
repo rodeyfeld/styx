@@ -72,6 +72,10 @@ zoom_out={
 ]
 }
 
+[layer_names]
+
+2d_navigation/layer_1="water"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
