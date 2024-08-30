@@ -4,9 +4,11 @@ class_name WorldMap
 
 @export var noise_height_texture: NoiseTexture2D
 @export var tile_data: Dictionary = {}
+@onready var water_navigation_region = $water_navigation_region
 
 var noise: Noise
 var tile_map_layers: Array[StyxLayer] = []
+
 func _ready() -> void:
 	noise = noise_height_texture.noise
 	var _tile_map_layers = $tile_map_layers.get_children()
@@ -14,7 +16,11 @@ func _ready() -> void:
 		tile_map_layers.append(_tile_map_layer)
 		tile_data[_tile_map_layer.name] = _tile_map_layer
 
+
+func generate_navigation_region_geometry():
+	var region_rid = NavigationServer2D.region_create()
 	
+
 func generate(width, height) -> void:
 	for x in range(0 , width):
 		for y in range(0, height):
@@ -25,7 +31,6 @@ func generate(width, height) -> void:
 				and  noise_val >= tile_map_layer.min_threshold
 				and tile_map_layer.active):
 					tile_map_layer.tile_positions.append(vector_pos)
-
 
 	for tile_map_layer in tile_map_layers:
 		if tile_map_layer.terrain_set_id > -1:
@@ -38,4 +43,6 @@ func generate(width, height) -> void:
 			for vector_pos in tile_map_layer.tile_positions:
 				tile_map_layer.set_cell(vector_pos, 0, tile_map_layer.atlas_coords.pick_random())
 
-	
+
+func _on_water_navigation_region_navigation_polygon_changed() -> void:
+	print("modded")

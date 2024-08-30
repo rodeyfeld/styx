@@ -9,7 +9,7 @@ rotation = -0.000695561
 script = ExtResource("1_kaqr7")
 metadata/_edit_horizontal_guides_ = [79.0]
 
-[node name="map" parent="." instance=ExtResource("2_afgw4")]
+[node name="Map" parent="." instance=ExtResource("2_afgw4")]
 
 [node name="Player" parent="." instance=ExtResource("3_gwkkr")]
 position = Vector2(4.00002, 0.0027771)
